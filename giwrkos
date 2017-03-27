@@ -1,7 +1,19 @@
 Eimai o Giorgos,kai eimai kavla
 
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<link rel="stylesheet" href="style.css">
+    <title>Table Generator</title>
+</head>
+<body>
+  <input type="button" onclick="loadJSON('init()');"value="kokos" />
+  <script>
+
 window.onload = function() {
-    var url = "http://localhost/gumball/sales.json";
+    var url = "input.json";
     var request = new XMLHttpRequest();
     request.open("GET", url);
     request.onload = function() {
@@ -13,6 +25,14 @@ window.onload = function() {
 }
 
 function updateSales(responseText) {
-    var salesDiv = document.getElementById("sales");
-    salesDiv.innerHTML = responseText;
+
+myArr=JSON.parse(responseText);
+	
+    $("body").after("<table id='1'><th>Manufacturer</th><th>Model</th><th>Year</th><th>class</th> <tr><td>"+myArr[0].manufacturer+"</td><td>"+myArr[0].model+"</td><td>"+myArr[0].year+"</td><td>"+myArr[0].class+"</td></tr><tr><td>"+myArr[1].manufacturer+"</td><td>"+myArr[1].model+"</td><td>"+myArr[1].year+"</td><td>"+myArr[1].class+"</td></tr><tr><td>"+myArr[2].manufacturer+"</td><td>"+myArr[2].model+"</td><td>"+myArr[2].year+"</td><td>"+myArr[2].class+"</td></tr>");
+	$("th").css({"background-color":"yellow"});
 }
+
+  </script>
+  
+</body>
+</html>
